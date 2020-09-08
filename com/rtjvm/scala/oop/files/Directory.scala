@@ -29,7 +29,8 @@ class Directory(override val parentPath: String, override val name: String, val 
         val entriesWithName = contents.filter(_.name == entry)
         if (entriesWithName.nonEmpty) {
           assert(entriesWithName.size == 1)
-          entriesWithName.head.toDir
+          val existingDirectory = entriesWithName.head.toDir
+          this
         } else {
           Directory(parentPath, name, contents :+ Directory.empty(getFullPath, entry))
         }
@@ -49,6 +50,7 @@ class Directory(override val parentPath: String, override val name: String, val 
         val entriesWithName = contents.filter(_.name == entry)
         if (entriesWithName.nonEmpty) {
           assert(entriesWithName.size == 1)
+          val existingFile = entriesWithName.head.toFile
           this
         } else {
           Directory(parentPath, name, contents :+ File.empty(getFullPath, entry))
