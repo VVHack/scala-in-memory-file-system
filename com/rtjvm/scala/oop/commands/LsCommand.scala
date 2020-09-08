@@ -16,8 +16,8 @@ class LsCommand extends Command {
       else (stream, state.setMessage(state.wd.ls))
     }
     catch {
-      case e: RuntimeException => (stream, state.setMessage(e.getMessage))
-      case _: Exception => (stream, state.setMessage("Unknown error occurred"))
+      case e: RuntimeException => (progressedStream, state.setMessage(e.getMessage))
+      case _: Exception => (progressedStream, state.setMessage("Unknown error occurred"))
     }
   }
 }
