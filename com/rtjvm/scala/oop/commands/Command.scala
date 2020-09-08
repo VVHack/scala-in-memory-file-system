@@ -53,8 +53,10 @@ object Command {
       case '.' :: rest => {
         if (pathList.isEmpty)
           pathToList(rest, pathList)
-        else
+        else if (pathList.last == "")
           pathToList(rest, pathList.dropRight(1))
+        else
+          pathToList(rest, pathList.dropRight(1) :+ (pathList.last + '.'))
       }
       case '/' :: rest => {
         if (pathList.nonEmpty)
