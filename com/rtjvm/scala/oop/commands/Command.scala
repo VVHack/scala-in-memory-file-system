@@ -67,6 +67,7 @@ object Command {
     }
   }
 
+  // Not doing path.split because it returns a mutable Array, mutable is bad
   def pathToList(path: String): List[String] = pathToList(path.toList)
 
   def processPathList(pathList: List[String], rootDir: Directory, curDir: Directory): List[String] = {
