@@ -50,6 +50,12 @@ object Command {
         else
           pathToList(rest, pathList.dropRight(1).dropRight(1))
       }
+      case '.' :: rest => {
+        if (pathList.isEmpty)
+          pathToList(rest, pathList)
+        else
+          pathToList(rest, pathList.dropRight(1))
+      }
       case '/' :: rest => {
         if (pathList.nonEmpty)
           pathToList(rest, pathList :+ "")
